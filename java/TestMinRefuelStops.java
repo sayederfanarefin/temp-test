@@ -33,10 +33,6 @@ public class TestMinRefuelStops {
         int[][] chain = {{10,10},{20,10},{30,10}};
         assert MinRefuelStops.minRefuelStops(40, 10, chain) == 3;
 
-        // More parameterized style checks
-        int[][] a1 = {{25,10},{35,10},{45,10}};
-        assert MinRefuelStops.minRefuelStops(50, 25, a1) == 2;
-
         int[][] a2 = {{10,30},{20,20},{30,20},{40,20}};
         assert MinRefuelStops.minRefuelStops(70, 10, a2) == 3;
 

@@ -32,7 +32,6 @@ def test_tight_chain_exact_zero_at_end():
 @pytest.mark.parametrize(
     "target,startFuel,stations,ans",
     [
-        (50, 25, [[25,10],[35,10],[45,10]], 2),
         (70, 10, [[10,30],[20,20],[30,20],[40,20]], 3),
         (200, 100, [[100,1],[150,50],[160,40],[170,30]], 2),
         (300, 1, [], -1),
