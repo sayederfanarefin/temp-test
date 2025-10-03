@@ -10,7 +10,7 @@ def min_refuel_stops(target: int, startFuel: int, stations: List[List[int]]) -> 
     n = len(stations)
     while fuel < target:
         while i < n and stations[i][0] <= fuel:
-            heapq.heappush(pq, -stations[i][1])
+            heapq.heappush(pq, -stations[i][0])
             i += 1
         if not pq:  # no reachable station
             return -1
