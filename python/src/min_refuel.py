@@ -1,16 +1,19 @@
+# python/src/min_refuel.py
 from typing import List
+import heapq
 
 def min_refuel_stops(target: int, startFuel: int, stations: List[List[int]]) -> int:
-    """Return the minimum number of refueling stops to reach target, or -1 if impossible.
-
-    Parameters
-    ----------
-    target : int
-        Destination miles east of start (position 0).
-    startFuel : int
-        Initial fuel in liters.
-    stations : List[List[int]]
-        Each station as [position_i, fuel_i] with positions strictly increasing.
-    """
-    # TODO: Implement your solution (use a greedy approach with a max-heap).
-    raise NotImplementedError("Implement min_refuel_stops in python/src/min_refuel.py")
+    fuel = startFuel
+    pq = []  # max-heap via negative values
+    i = 0
+    stops = 0
+    n = len(stations)
+    while fuel < target:
+        while i < n and stations[i][0] <= fuel:
+            heapq.heappush(pq, -stations[i][1])
+            i += 1
+        if not pq:  # no reachable station
+            return -1
+        fuel += -heapq.heappop(pq)
+        stops += 1
+    return stops
