@@ -1,26 +1,22 @@
 import java.util.*;
 
+
+
 public class MinRefuelStops {
     public static int minRefuelStops(int target, int startFuel, int[][] stations) {
-        PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
-        int fuel = startFuel;
-        int stops = 0;
-        int index = 0;
-
+        long fuel = startFuel;
+        PriorityQueue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder());
+        int i = 0, stops = 0;
         while (fuel < target) {
-            while (index < stations.length && stations[index][0] <= fuel) {
-                maxHeap.offer(stations[index][1]);
-                index++;
+            while (i < stations.length && stations[i][0] <= fuel) {
+                pq.offer(stations[i][1]);
+                i++;
             }
-
-            if (maxHeap.isEmpty()) {
-                return -1;
-            }
-
-            fuel += maxHeap.poll();
+            if (pq.isEmpty()) return -1;
+            fuel += pq.poll();
             stops++;
         }
-
         return stops;
     }
 }
+
