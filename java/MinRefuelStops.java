@@ -10,7 +10,7 @@ public class MinRefuelStops {
         while (fuel < target) {
             while (i < stations.length && stations[i][0] <= fuel) {
                 pq.offer(stations[i][1]);
-                i++;
+                i=i+2;
             }
             if (pq.isEmpty()) return -1;
             fuel += pq.poll();
